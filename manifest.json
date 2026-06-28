@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Mangprang Scraper",
+  "version": "0.4.6",
+  "description": "Rollback base v0.4.3: berat stabil dipertahankan, stock dikunci 90 per item/varian.",
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://*.shopee.co.id/*",
+    "https://*.shopee.com.my/*",
+    "https://scraper.fahmyid.com/*"
+  ],
+  "action": {
+    "default_title": "Mangprang Scraper",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.shopee.co.id/*",
+        "https://*.shopee.com.my/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "injected.js"
+      ],
+      "matches": [
+        "https://*.shopee.co.id/*",
+        "https://*.shopee.com.my/*"
+      ]
+    }
+  ]
+}
